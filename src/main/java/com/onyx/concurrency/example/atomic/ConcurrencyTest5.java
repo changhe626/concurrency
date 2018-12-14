@@ -4,6 +4,10 @@ import com.onyx.concurrency.annotaions.ThreadSafe;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
 
+/**
+ * 其实这个类的实现和其他的Atomic类的实现差不多，都是一个cas 的原理，只不过在这基础上用了反射来控制对象的字段。
+ * AtomicIntegerfieldupdater  实现了普通变量的原子操作 ，加法减都可以
+ */
 @ThreadSafe
 public class ConcurrencyTest5 {
 
@@ -16,7 +20,9 @@ public class ConcurrencyTest5 {
     }
 
     /**
-     * 必须是volatile 且不能使static
+     * 必须是volatile 且不能是static,不能是final
+     * 对于AtomicIntegerFieldUpdater和AtomicLongFieldUpdater只能修改int/long类型的字段，不能修改其包装类型（Integer/Long）。
+     * 如果要修改包装类型就需要使用AtomicReferenceFieldUpdater
      */
     public volatile int count=100;
 
