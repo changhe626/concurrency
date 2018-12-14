@@ -31,6 +31,7 @@ import java.util.concurrent.Executors;
 
 /**
  * 编译之后，切换到SynchronizedDemo1.class的同级目录之后，然后用javap -v SynchronizedDemo1.class查看字节码文件
+ * 查看java字节码的工具jclasslib
  *
  * 执行同步代码块后首先要先执行monitorenter指令，退出的时候monitorexit指令。通过分析之后可以看出，使用Synchronized进行同步，
  * 其关键就是必须要对对象的监视器monitor进行获取，当线程获取monitor后才能继续往下执行，否则就只能等待。而这个获取的过程是互斥的，
