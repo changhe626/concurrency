@@ -12,7 +12,7 @@ package com.onyx.concurrency.example.threadlocal;
  */
 public class RequestHolder {
 
-    private static final ThreadLocal<Long> requestHolder=new ThreadLocal<>();
+    private final static  ThreadLocal<Long> requestHolder=new ThreadLocal<>();
 
     public static void add(Long id){
         requestHolder.set(id);
@@ -22,6 +22,9 @@ public class RequestHolder {
         return requestHolder.get();
     }
 
+    /**
+     * 如果不删除,会造成内存泄漏
+     */
     public static void remove(){
         requestHolder.remove();
     }
