@@ -15,6 +15,9 @@ import java.util.List;
 @ThreadSafe
 public class ImmutableDemo4 {
 
+    /**
+     * guava 中的不可变的容器,都是实现了java中对应的接口
+     */
     private static ImmutableList<Integer> list=ImmutableList.of(1,2,3,5,5);
 
     private static List<Integer> list2=ImmutableList.of(1,2,3,5,5);

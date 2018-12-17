@@ -44,6 +44,7 @@ public class DateFormatDemo2 {
     }
 
     private static void update(){
+        //在方法内部进行使用,每次调用都创建一个新的...
         SimpleDateFormat format=new SimpleDateFormat("yyyymmdd");
         try {
             format.parse("20181216");

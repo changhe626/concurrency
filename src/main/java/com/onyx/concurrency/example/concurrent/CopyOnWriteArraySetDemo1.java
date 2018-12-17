@@ -8,6 +8,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
+/**
+ * https://blog.csdn.net/a953713428/article/details/57403164
+ *
+ * https://www.cnblogs.com/skywang12345/p/3498497.html
+ */
 @ThreadSafe
 public class CopyOnWriteArraySetDemo1 {
 

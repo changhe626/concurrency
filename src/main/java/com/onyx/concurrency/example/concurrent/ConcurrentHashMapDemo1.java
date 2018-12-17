@@ -64,3 +64,13 @@ public class ConcurrentHashMapDemo1 {
 
 
 }
+
+/**
+ * ConcurrentHashMap 原理解析（JDK1.8）
+ * https://www.jianshu.com/p/d10256f0ebea
+ *
+ *
+ * ConcurrentHashMap(JDK1.8)为什么要放弃Segment
+ * https://my.oschina.net/liuxiaomian/blog/880088
+ *
+ */

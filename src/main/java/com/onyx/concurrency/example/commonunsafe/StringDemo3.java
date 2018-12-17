@@ -1,23 +1,17 @@
-package com.onyx.concurrency.example.concurrent;
+package com.onyx.concurrency.example.commonunsafe;
 
-import com.onyx.concurrency.annotaions.ThreadSafe;
+import com.onyx.concurrency.annotaions.NotThreadSafe;
 
-import java.util.Set;
-import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
-
 /**
- * ConcurrentSkipListSet和TreeSet，它们虽然都是有序的集合。但是，第一，它们的线程安全机制不同，TreeSet是非线程安全的，
- * 而ConcurrentSkipListSet是线程安全的。第二，ConcurrentSkipListSet是通过ConcurrentSkipListMap实现的，而TreeSet是通过TreeMap实现的。
+ * String 确实是不可变的类,但是不一定线程安全....
  */
-@ThreadSafe
-public class ConcurrentSkipListSetDemo1 {
-
-    private static Set<Integer> list=new ConcurrentSkipListSet<>();
+@NotThreadSafe
+public class StringDemo3 {
 
     /**
      * 客户端的总数
@@ -27,6 +21,8 @@ public class ConcurrentSkipListSetDemo1 {
      * 线程数
      */
     private static int threadTotal=200;
+    //计数
+    private static String sb=new String();
 
 
     public static void main(String[] args) throws InterruptedException {
@@ -34,11 +30,10 @@ public class ConcurrentSkipListSetDemo1 {
         Semaphore semaphore = new Semaphore(threadTotal);
         CountDownLatch downLatch = new CountDownLatch(clientTotal);
         for (int i = 0; i < clientTotal; i++) {
-            final int tmp=i;
             pool.execute(()->{
                 try {
                     semaphore.acquire();
-                    update(tmp);
+                    update();
                     semaphore.release();
                 } catch (InterruptedException e) {
                     System.out.println(e.toString());
@@ -47,13 +42,12 @@ public class ConcurrentSkipListSetDemo1 {
             });
         }
         downLatch.await();
+        System.out.println("值是:"+sb.length());
         pool.shutdown();
-        System.out.println(list.size());
     }
 
-    private static void update(int tmp){
-        list.add(tmp);
+    private static void update(){
+        sb=sb+"1";
+        System.out.println(sb.length());
     }
-
-
 }
