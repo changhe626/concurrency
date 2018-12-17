@@ -22,3 +22,9 @@ public class FutureTaskDemo1 {
     }
 
 }
+/**
+ * https://blog.csdn.net/javazejian/article/details/50896505
+ *
+ * FutureTask除了实现了Future接口外还实现了Runnable接口，因此FutureTask也可以直接提交给Executor执行。
+ * 当然也可以调用线程直接执行（FutureTask.run()）
+ */

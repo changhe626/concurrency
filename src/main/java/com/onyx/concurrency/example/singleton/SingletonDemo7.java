@@ -1,38 +1,22 @@
 package com.onyx.concurrency.example.singleton;
 
-
-import com.onyx.concurrency.annotaions.Recommend;
 import com.onyx.concurrency.annotaions.ThreadSafe;
 
 /**
- * 枚举模式,最安全的
- * 安全发布对象
+ * 静态内部类的实现方式
  */
 @ThreadSafe
-@Recommend
 public class SingletonDemo7 {
 
     private SingletonDemo7() {
     }
 
-    public static SingletonDemo7 getInstance(){
-        return Singleton.INSTANCE.getInstance();
+    private static class SingletonHolder {
+        private static final SingletonDemo7 INSTANCE = new SingletonDemo7();
     }
 
-    private enum Singleton{
-        INSTANCE;
-
-        private SingletonDemo7 singleton;
-
-        //JVM 保证构造函数只调用一次
-        Singleton(){
-            singleton=new SingletonDemo7();
-        }
-
-        public SingletonDemo7 getInstance(){
-            return singleton;
-        }
+    public static final SingletonDemo7 getInstance() {
+        return SingletonHolder.INSTANCE;
     }
-
 
 }

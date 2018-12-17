@@ -12,6 +12,11 @@ public class ThreadPoolDemo4 {
 
     public static void main(String[] args) {
 
+        /**
+         * 这个只是简介。这个类是继承的ThreadPoolExecutor，并且实现了ScheduledExecutorService接口，简单来说，
+         * 这个类可以进行一些周期性的线程调度工作。
+         那么这个时候肯定可以联想到日常业务中的定时器。的确，不过用这个做定时器，现在很少了（有了spring-quartz）。
+         */
         ScheduledExecutorService pool = Executors.newScheduledThreadPool(5);
 
         //延迟3秒后执行

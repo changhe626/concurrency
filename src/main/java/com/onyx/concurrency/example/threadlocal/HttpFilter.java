@@ -7,6 +7,7 @@ import java.io.IOException;
 
 /**
  * 过滤器
+ * 限制性过滤器,再执行拦截器
  */
 public class HttpFilter implements Filter {
     @Override

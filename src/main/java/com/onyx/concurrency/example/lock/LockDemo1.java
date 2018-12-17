@@ -11,6 +11,20 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 模拟并发测试
+ *
+ *
+ * // 获取锁
+ takeLock.lock();
+
+ try {
+ // 业务逻辑
+ } finally {
+ // 释放锁
+ takeLock.unlock();
+ }
+
+ 使用try-finally的形式
+
  */
 @ThreadSafe
 public class LockDemo1 {
@@ -26,6 +40,9 @@ public class LockDemo1 {
     //计数
     private static int count=0;
 
+    /**
+     * 通过传入一个布尔值来设置公平锁，为true则是公平锁，false则为非公平锁,默认是不公平锁
+     */
     private final static Lock lock=new ReentrantLock();
 
 
@@ -57,6 +74,11 @@ public class LockDemo1 {
         }finally {
             lock.unlock();
         }
+        /**
+         * tryLock()方法会返回一个布尔值，获取锁成功则为true
+         * lock.tryLock(3, TimeUnit.SECONDS)
+         *
+         */
     }
 
 }

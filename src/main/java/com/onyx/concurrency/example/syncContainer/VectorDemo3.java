@@ -7,6 +7,8 @@ import java.util.Vector;
 
 /**
  * 遍历循环和删除分开,遍历的时候不去更新....,可以遍历做标记...
+ *
+ * 不然很容易出现数组越界的异常,而且删除的元素也不是想要删除的了.
  */
 @NotThreadSafe
 public class VectorDemo3 {

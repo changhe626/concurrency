@@ -15,7 +15,7 @@ public class LockDemo2 {
    private final static ReentrantReadWriteLock lock=new ReentrantReadWriteLock();
 
     /**
-     * 悲观锁.
+     * 悲观锁.分别获取读写锁
      */
    private final static Lock readLock=lock.readLock();
    private final static Lock writeLock=lock.writeLock();
