@@ -1,0 +1,4 @@
+任务调度系统分布式:elastic-job+zookeeper
+准备切换:apache curator+zookeeper 分布式锁实现
+监控报警机制
+
