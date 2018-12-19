@@ -49,3 +49,16 @@ https://www.jianshu.com/p/2596e559db5c
 大概思路：每次有相关操作的时候，就向redis服务器发送一个incr命令，比如需要限制某个用户访问/index接口的次数，只需要拼接用户id和接口名生成redis的key，每次该用户访问此接口时，只需要对这个key执行incr命令，在这个key带上过期时间，就可以实现指定时间的访问频率。
 
 https://www.lijiaocn.com/%E6%96%B9%E6%B3%95/2018/10/12/ali-traffic-limit-and-service-downgrade-md.html
+
+
+https://www.infoq.cn/article/microservice-interface-rate-limit
+
+
+微服务架构中没有接口限流，可能会遇到哪些问题？
+针对微服务接口限流，如何选择合适的限流算法？
+如何根据场景和性能要求权衡选择单机还是分布式限流？
+如何根据业务需求灵活的选择不同的限流熔断机制？
+如何对接口选择合适的限流时间粒度和最大限流值？
+如何验证微服务接口限流功能的有效性和正确性？
+如何打造高度容错、高 TPS、低延迟的限流框架？
+文章的最后，还顺带介绍了笔者开源的限流框架： ratelimiter4j，欢迎大家交流使用。
