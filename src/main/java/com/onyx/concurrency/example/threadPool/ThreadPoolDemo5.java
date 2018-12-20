@@ -8,6 +8,12 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 如何给定合适的线程池???
+ *
+ 1、用ThreadPoolExecutor自定义线程池，看线程是的用途，如果任务量不大，可以用无界队列，如果任务量非常大，要用有界队列，防止OOM
+ 2、如果任务量很大，还要求每个任务都处理成功，要对提交的任务进行阻塞提交，重写拒绝机制，改为阻塞提交。保证不抛弃一个任务
+ 3、最大线程数一般设为2N+1最好，N是CPU核数
+ 4、核心线程数，看应用，如果是任务，一天跑一次，设置为0，合适，因为跑完就停掉了，如果是常用线程池，看任务量，是保留一个核心还是几个核心线程数
+ 5、如果要获取任务执行结果，用CompletionService，但是注意，获取任务的结果的要重新开一个线程获取，如果在主线程获取，就要等任务都提交后才获取，就会阻塞大量任务结果，队列过大OOM，所以最好异步开个线程获取结果
  */
 public class ThreadPoolDemo5 {
 
@@ -44,6 +50,9 @@ public class ThreadPoolDemo5 {
          CallerRunsPolicy：在调用者的当前线程去执行这个任务。
          */
         ThreadPoolExecutor pool = new ThreadPoolExecutor(5, 5, 100, TimeUnit.MINUTES, new ArrayBlockingQueue<>(5));
+
+        //使用直接丢弃任务本身的拒绝策略：DiscardPolicy
+        pool.setRejectedExecutionHandler(new ThreadPoolExecutor.DiscardPolicy());
 
         for (int i = 0; i < 10; i++) {
             final int tmp=i;
