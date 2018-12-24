@@ -17,6 +17,7 @@ public class ImmutableDemo4 {
 
     /**
      * guava 中的不可变的容器,都是实现了java中对应的接口
+     * 推荐使用ImmutableList接口进行接收,这样使用add方法的时候就会有不能使用的提示了,使用List接收就没有.
      */
     private static ImmutableList<Integer> list=ImmutableList.of(1,2,3,5,5);
 
@@ -31,7 +32,7 @@ public class ImmutableDemo4 {
 
     public static void main(String[] args) {
 
-        //list.add(1);
+        list.add(1);
         //list2.add(1);
         //set.add(1);
         System.out.println(list);
