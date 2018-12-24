@@ -42,6 +42,8 @@ public class LockDemo1 {
 
     /**
      * 通过传入一个布尔值来设置公平锁，为true则是公平锁，false则为非公平锁,默认是不公平锁
+     * 不公平锁是直接进行比较设置,抢占式
+     * 公平锁是线程在一个链表中进行排队.
      */
     private final static Lock lock=new ReentrantLock();
 
