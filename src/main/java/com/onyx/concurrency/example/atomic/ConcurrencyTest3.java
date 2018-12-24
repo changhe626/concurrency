@@ -70,7 +70,7 @@ public class ConcurrencyTest3 {
             });
         }
         downLatch.await();
-        System.out.println("值是:"+count.longValue());
+        System.out.println("值是:"+count.longValue()+",sum:"+count.sum());
         pool.shutdown();
     }
 
