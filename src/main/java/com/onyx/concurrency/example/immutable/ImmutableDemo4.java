@@ -11,6 +11,8 @@ import java.util.List;
 /**
  * 不可变容器
  * 尽量不用可变容器,用不可变的,在多线程下好
+ *
+ * 推荐使用guava里面的不可变的容器,不要使用Collections里面的.
  */
 @ThreadSafe
 public class ImmutableDemo4 {
