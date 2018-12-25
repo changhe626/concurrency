@@ -9,6 +9,11 @@ import java.util.concurrent.TimeUnit;
  * 并发的访问数的控制
  * 仅能提供有限的访问资源.
  *
+ * 非公平性体现在哪里？
+ 当一个线程A执行acquire方法时，会直接尝试获取许可，而不管同一时刻阻塞队列中是否有线程也在等待许可，如果恰好有线程C执行release释放许可，
+ 并唤醒阻塞队列中第一个等待的线程B，这个时候，线程A和线程B是共同竞争可用许可，不公平性就是这么体现出来的，线程A一点时间都没等待就和线程B同等对待。
+
+ *
  */
 public class SemaphoreDemo2 {
     private final static int threadCount=20;
