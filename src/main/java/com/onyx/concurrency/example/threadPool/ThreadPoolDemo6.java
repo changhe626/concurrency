@@ -12,7 +12,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-
+/**
+ * https://www.jianshu.com/p/ade771d2c9c0
+ */
 public class ThreadPoolDemo6 {
 
 
